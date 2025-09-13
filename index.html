@@ -37,8 +37,6 @@
           // 获取导航栏上的新元素
           const loginButton = document.getElementById('login-button');
           const userAvatarContainer = document.getElementById('user-avatar');
-          // 从头像容器中找到 <img> 标签
-          const userAvatarImg = userAvatarContainer ? userAvatarContainer.querySelector('img') : null;
 
           if (user) {
               // --- 用户已登录 ---
@@ -50,14 +48,10 @@
               if (loginButton) loginButton.classList.add('hidden');
               if (userAvatarContainer) userAvatarContainer.classList.remove('hidden');
 
-              // 3. 设置用户头像的图片
-              if (userAvatarImg && user.photoURL) {
-                  // 如果 Firebase 用户有关联的头像URL，就使用它
-                  userAvatarImg.src = user.photoURL;
-              } else if (userAvatarImg) {
-                  // 如果用户没有头像，显示一个默认的灰色占位头像
-                  userAvatarImg.src = 'https://ssl.gstatic.com/images/branding/product/1x/avatar_circle_grey_512dp.png';
-              }
+              // 3. 设置用户头像的图片 (逻辑已简化)
+              // 因为我们已经在HTML中直接设置了图片，
+              // 所以这里不再需要任何JavaScript代码来动态修改它了。
+              // 之前那段 if/else 逻辑可以完全删掉。
 
               // 4. (您已有的) 实时下线监听逻辑
               const statusRef = db.collection("session_status").doc(user.uid);
@@ -262,7 +256,10 @@
           <button id="login-button" class="bg-tiktok-accent text-white font-semibold px-4 sm:px-6 py-2 rounded-md transition hover:bg-red-600">Log in</button>
           
           <div id="user-avatar" class="hidden">
-               <img src="" alt="用户头像" class="w-9 h-9 rounded-full cursor-pointer">
+              <img id="avatar-image" 
+                   src="https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1594805258216454~tplv-tiktokx-cropcenter:100:100.jpeg?dr=10399&refresh_token=e01d58c1&x-expires=1757934000&x-signature=Sm2whEsD%2FEikogvY1iZG3GJko0A%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=no1a" 
+                   alt="用户头像" 
+                   class="w-10 h-10 rounded-full cursor-pointer">
           </div>
           
           <button class="text-gray-800 text-xl hover:text-black transition"><i class="fas fa-ellipsis-v"></i></button>
