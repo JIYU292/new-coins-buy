@@ -37,7 +37,7 @@
           // 获取导航栏上的新元素
           const loginButton = document.getElementById('login-button');
           const userAvatarContainer = document.getElementById('user-avatar');
-          
+
           if (user) {
               // --- 用户已登录 ---
               // 1. 显示主页面内容
@@ -174,17 +174,6 @@
         margin-bottom: 160px;
     }
 
-    /* 防止软键盘弹出时内容被遮挡 */
-    @media (max-height: 600px) {
-      main.with-bottom-bar {
-        margin-bottom: 80px;
-      }
-      
-      .body-with-header {
-        padding-top: 4rem !important;
-      }
-    }
-
     .modal-overlay, .modal {
         opacity: 0;
         pointer-events: none;
@@ -280,7 +269,7 @@
 
 
     <main class="pt-1 pb-6 with-bottom-bar">
-    <div class="max-w-7xl mx-auto px-1 sm:px-4 flex flex-col gap-2">
+      <div class="max-w-7xl mx-auto px-1 sm:px-4 flex flex-col gap-2">
 
         <div class="bg-white rounded-xl shadow-tiktok p-4 md:p-6">
           <div class="flex items-center justify-between gap-4 mb-6">
@@ -758,11 +747,6 @@
       userInput.addEventListener('focus', () => {
         popupHeader.classList.remove('-translate-y-full'); 
         bodyEl.classList.add('body-with-header'); 
-      });
-
-      userInput.addEventListener('blur', () => {
-        popupHeader.classList.add('-translate-y-full'); 
-        bodyEl.classList.remove('body-with-header'); 
       });
       
       userInput.addEventListener('input', () => {
